@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Ticket Generator</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Generate Your Ticket</h2>
+    <form id="ticketForm">
+      <div class="form-group">
+        <label for="eventName">Event Name</label>
+        <input type="text" id="eventName" name="eventName" required>
+      </div>
+      <div class="form-group">
+        <label for="eventDate">Date</label>
+        <input type="date" id="eventDate" name="eventDate" required>
+      </div>
+      <div class="form-group">
+        <label for="eventTime">Time</label>
+        <input type="time" id="eventTime" name="eventTime" required>
+      </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" required>
+      </div>
+      <div class="form-group">
+        <label for="attendeeName">Attendee Name</label>
+        <input type="text" id="attendeeName" name="attendeeName" required>
+      </div>
+      <div class="form-group">
+        <label for="ticketType">Ticket Type</label>
+        <select id="ticketType" name="ticketType" required>
+          <option value="Regular">Regular</option>
+          <option value="VIP">VIP</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="ticketCount">Number of Tickets</label>
+        <input type="number" id="ticketCount" name="ticketCount" min="1" value="1" required>
+      </div>
+      <div class="form-group">
+        <label for="couponCode">Coupon Code (Optional)</label>
+        <input type="text" id="couponCode" name="couponCode">
+      </div>
+      <div class="form-group">
+        <label for="email">Email (Optional for confirmation)</label>
+        <input type="email" id="email" name="email">
+      </div>
+      <button type="submit">Generate Tickets</button>
+    </form>
+  </div>
+
+  <!-- Ticket Preview Section -->
+  <div class="container" id="ticketPreview">
+    <h2>Your Ticket Preview</h2>
+    <div id="ticketContainer"></div>
+    <div id="totalPrice"></div>
+    <button id="downloadImage">Download as Image</button>
+    <button id="downloadPDF">Download as PDF</button>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
